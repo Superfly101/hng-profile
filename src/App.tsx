@@ -1,67 +1,58 @@
-import { useEffect, useState } from "react";
-import photo from "./assets/profile.jpeg";
-
-const DAYS = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+import { useState } from "react";
+import { StrictModeDroppable } from "./components/Droppable";
+import NavBar from "./components/NavBar";
+import { IMAGE, IMAGE_LIST } from "./utils/index";
+import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
 
 function App() {
-  const [day, setDay] = useState("");
-  const [utcTime, setUtcTime] = useState("");
+  const [images, setImages] = useState<IMAGE[]>(IMAGE_LIST);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const day = DAYS[new Date().getUTCDay()];
-      const hours = String(new Date().getUTCHours()).padStart(2, "0");
-      const minutes = String(new Date().getUTCMinutes()).padStart(2, "0");
-      const seconds = String(new Date().getUTCSeconds()).padStart(2, "0");
-      setDay(day);
-      setUtcTime(`${hours}:${minutes}:${seconds}`);
-    }, 1000);
+  const handleDrag = (result: DropResult) => {
+    const items = Array.from(images);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination!.index, 0, reorderedItem);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    setImages(items);
+  };
   return (
-    <main className="p-4 flex flex-col gap-4 text-center">
-      <section className="flex flex-col items-center py-2">
-        <div className="overflow-hidden rounded-full w-40 h-40">
-          <img
-            src={photo}
-            className="w-full"
-            alt="Superfly The Tech Brhoe"
-            data-testid="slackDisplayImage"
-          ></img>
-        </div>
-        <h1 className="text-3xl font-bold" data-testid="slackUserName">
-          Superfly The Tech Brhoe
-        </h1>
-      </section>
-      <section className="flex flex-col items-center py-2">
-        <div className="mb-4 text-lg">
-          <h4 className="text-sm">Day and time (UTC):</h4>
-          <p className="font-semibold" data-testid="currentDayOfTheWeek">
-            {day}
-          </p>
-          <p className="font-semibold" data-testid="currentUTCTime">
-            {utcTime}
-          </p>
-        </div>
-        <p data-testid="myTrack">Track: Frontend</p>
-      </section>
-      <section className="flex flex-col items-center py-2">
-        <a href="" data-testid="githubURL">
-          GitHub URL
-        </a>
-      </section>
-    </main>
+    <>
+      <NavBar />
+      <main className="px-4 py-4">
+        <h1>Hello World</h1>
+        <DragDropContext onDragEnd={handleDrag}>
+          <StrictModeDroppable droppableId="images">
+            {(provided) => (
+              <ul
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                className="image-list"
+              >
+                {IMAGE_LIST.map((image, index) => (
+                  <Draggable
+                    key={image.id}
+                    draggableId={image.id}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <li
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                        ref={provided.innerRef}
+                      >
+                        <div>
+                          <img src={image.url} alt={image.title} />
+                        </div>
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </StrictModeDroppable>
+        </DragDropContext>
+      </main>
+    </>
   );
 }
 
