@@ -3,6 +3,7 @@ import { StrictModeDroppable } from "./components/Droppable";
 import NavBar from "./components/NavBar";
 import { IMAGE, IMAGE_LIST, TAGS } from "./utils/index";
 import { DragDropContext, Draggable, DropResult } from "react-beautiful-dnd";
+import { useAuth0 } from "@auth0/auth0-react";
 
 type Tags =
   | "all"
@@ -18,6 +19,8 @@ type Tags =
 function App() {
   const [images, setImages] = useState<IMAGE[]>(IMAGE_LIST);
   const [activeTag, setActiveTag] = useState<Tags>("all");
+
+  const { isAuthenticated } = useAuth0();
 
   const activeClass = "border-2 border-blue-300 text-blue-400 font-[500]";
 
@@ -47,6 +50,12 @@ function App() {
           <h1 className="font-bold text-3xl">
             Rearrange the images by dragging and dropping
           </h1>
+          {!isAuthenticated && (
+            <p className="text-red-400 text-lg">
+              <span className="font-[500]">Note: </span>You have to login to use
+              drag and drop feature!
+            </p>
+          )}
         </section>
         <section className="flex flex-col gap-4">
           <div className="border-y-2 py-2 flex gap-4 items-center text-center">
@@ -69,45 +78,66 @@ function App() {
             </ul>
           </div>
 
-          <DragDropContext onDragEnd={handleDrag}>
-            <StrictModeDroppable droppableId="images">
-              {(provided) => (
-                <ul
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  className="relative grid gap-4 grid-cols-16 md:grid-cols-18"
-                >
-                  {images.map((image, index) => (
-                    <Draggable
-                      key={image.id}
-                      draggableId={image.id}
-                      index={index}
-                    >
-                      {(provided) => (
-                        <li
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                          ref={provided.innerRef}
-                        >
-                          <div className="relative">
-                            <img
-                              src={image.url}
-                              alt={image.title}
-                              className="w-full m-2"
-                            />
-                            <span className="absolute top-3 right-1 border rounded-full bg-slate-400 px-2 text-white text-sm">
-                              {image.tag}
-                            </span>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
-                  ))}
-                  {provided.placeholder}
-                </ul>
-              )}
-            </StrictModeDroppable>
-          </DragDropContext>
+          {isAuthenticated ? (
+            <DragDropContext onDragEnd={handleDrag}>
+              <StrictModeDroppable droppableId="images">
+                {(provided) => (
+                  <ul
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    className="relative grid gap-4 grid-cols-16 md:grid-cols-18"
+                  >
+                    {images.map((image, index) => (
+                      <Draggable
+                        key={image.id}
+                        draggableId={image.id}
+                        index={index}
+                      >
+                        {(provided) => (
+                          <li
+                            {...provided.draggableProps}
+                            {...provided.dragHandleProps}
+                            ref={provided.innerRef}
+                          >
+                            <div className="relative">
+                              <img
+                                src={image.url}
+                                alt={image.title}
+                                className="w-full m-2"
+                              />
+                              <span className="absolute top-3 right-1 border rounded-full bg-slate-400 px-2 text-white text-sm">
+                                {image.tag}
+                              </span>
+                            </div>
+                          </li>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </ul>
+                )}
+              </StrictModeDroppable>
+            </DragDropContext>
+          ) : (
+            <section>
+              <ul className="relative grid gap-4 grid-cols-16 md:grid-cols-18">
+                {images.map((image, index) => (
+                  <li key={index}>
+                    <div className="relative">
+                      <img
+                        src={image.url}
+                        alt={image.title}
+                        className="w-full m-2"
+                      />
+                      <span className="absolute top-3 right-1 border rounded-full bg-slate-400 px-2 text-white text-sm">
+                        {image.tag}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </section>
       </main>
     </>
