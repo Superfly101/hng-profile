@@ -11,8 +11,7 @@ const LogoutButton = () => {
       onClick={() =>
         logout({
           logoutParams: {
-            returnTo: `
-          ${window.location.origin}/image-gallery`,
+            returnTo: import.meta.env.VITE_AUTH0_CALLBACK,
           },
         })
       }

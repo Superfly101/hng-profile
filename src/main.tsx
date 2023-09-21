@@ -10,8 +10,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Auth0Provider
-        domain="dev-yoaz0vnd4h8pc4e7.us.auth0.com"
-        clientId="Q7ZCuzsYuooUGWM2LZQgjl5Ysa0LFeif"
+        domain={import.meta.env.VITE_AUTH0_DOMAIN}
+        clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
         authorizationParams={{
           redirect_uri: "https://superfly101.github.io/image-gallery",
         }}
