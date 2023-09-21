@@ -9,11 +9,7 @@ const LogoutButton = () => {
       colorScheme="blue"
       variant="outline"
       onClick={() =>
-        logout({
-          logoutParams: {
-            returnTo: "https://superfly101.github.io/image-gallery/",
-          },
-        })
+        logout({ logoutParams: { returnTo: window.location.origin } })
       }
     >
       Log Out
