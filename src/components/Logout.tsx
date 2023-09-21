@@ -9,7 +9,12 @@ const LogoutButton = () => {
       colorScheme="blue"
       variant="outline"
       onClick={() =>
-        logout({ logoutParams: { returnTo: window.location.origin } })
+        logout({
+          logoutParams: {
+            returnTo: `
+          ${window.location.origin}/image-galery`,
+          },
+        })
       }
     >
       Log Out
