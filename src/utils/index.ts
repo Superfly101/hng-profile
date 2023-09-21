@@ -5,24 +5,42 @@ export type IMAGE = {
   url: string;
 };
 
+export const TAGS = [
+  "all",
+  "food",
+  "city",
+  "animal",
+  "cars",
+  "animation",
+  "people",
+  "landscape",
+  "house",
+];
+
 export const IMAGE_LIST: IMAGE[] = [
   {
     id: "1",
     title: "Pancake",
     tag: "food",
-    url: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+    url: "https://img.freepik.com/free-photo/top-view-vegetable-soup-with-meat-inside-plate-grey_140725-36040.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
+  },
+  {
+    id: "21",
+    title: "Ride",
+    tag: "cars",
+    url: "https://img.freepik.com/free-photo/blue-sedan-car-driving-road-cloudy-weather_114579-4053.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
   },
   {
     id: "2",
     title: "Pizza",
     tag: "food",
-    url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+    url: "https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141352.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "3",
-    title: "Boiled egg",
-    tag: "food",
-    url: "https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
+    title: "A home",
+    tag: "house",
+    url: "https://img.freepik.com/free-photo/3d-rendering-loft-luxury-living-room-with-bookshelf-near-bookshelf_105762-2224.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "4",
@@ -31,13 +49,19 @@ export const IMAGE_LIST: IMAGE[] = [
     url: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
   },
   {
-    id: "5",
+    id: "15",
     title: "Body of water surrounded by trees",
     tag: "landscape",
     url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGFuZHNjYXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
   },
   {
     id: "5",
+    title: "Lavander flower field",
+    tag: "house",
+    url: "https://img.freepik.com/free-photo/living-room-with-blue-couch-white-wall-with-painting-it_1340-23237.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
+  },
+  {
+    id: "25",
     title: "Lavander flower field",
     tag: "landscape",
     url: "https://images.unsplash.com/photo-1532274402911-5a369e4c4bb5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGFuZHNjYXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
@@ -46,13 +70,13 @@ export const IMAGE_LIST: IMAGE[] = [
     id: "6",
     title: "Green grass field at sunrise",
     tag: "landscape",
-    url: "https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bGFuZHNjYXBlfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
+    url: "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "7",
-    title: "Brown deer standing on green grass",
-    tag: "animal",
-    url: "https://images.unsplash.com/photo-1484406566174-9da000fda645?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW5pbWFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60",
+    title: "Dark blurred motion",
+    tag: "cars",
+    url: "https://img.freepik.com/free-photo/blue-jeep-parking-public-zone_114579-4042.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
   },
   {
     id: "8",
@@ -63,37 +87,49 @@ export const IMAGE_LIST: IMAGE[] = [
   {
     id: "9",
     title: "Person hold Apple pencil",
-    tag: "mockups",
-    url: "https://images.unsplash.com/photo-1552238979-402eb7a9258c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Nnw0NDc0NTg5fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
+    tag: "animation",
+    url: "https://img.freepik.com/free-vector/realistic-samurai-illustrated-background_52683-69457.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "10",
     title: "A house with a lot of trees and bushes",
-    tag: "Luxury",
-    url: "https://images.unsplash.com/photo-1685514823717-7e1ff6ee0563?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8M3w1QWs3cWNsek9CZ3x8ZW58MHx8fHx8&auto=format&fit=crop&w=600&q=60",
+    tag: "city",
+    url: "https://img.freepik.com/free-photo/modern-skyscrapers-illuminate-night-city-vanishing-into-dark-generative-ai_188544-11259.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "11",
     title: "Person hold Apple pencil",
-    tag: "mockups",
-    url: "https://images.unsplash.com/photo-1552238979-402eb7a9258c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Nnw0NDc0NTg5fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=600&q=60",
+    tag: "people",
+    url: "https://img.freepik.com/free-photo/horizontal-shot-pretty-dark-skinned-woman-with-afro-hairstyle-has-broad-smile-white-teeth-shows-something-nice-friend-points-upper-right-corner-stands-against-wall_273609-16442.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
   },
   {
     id: "12",
     title: "Classic car: vehicle interior of vintage car",
-    tag: "cars",
-    url: "https://plus.unsplash.com/premium_photo-1682125740214-fcddeef28561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=60",
+    tag: "people",
+    url: "https://img.freepik.com/free-photo/man-isolated-showing-emotions-end-gestures_1303-30095.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
   },
   {
     id: "13",
     title: "Yellow Porshe",
-    tag: "cars",
-    url: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNhcnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
+    tag: "animation",
+    url: "https://img.freepik.com/free-photo/jungle-background-forest-nature-scene-futuristic-generative-ai_191095-515.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
   },
   {
     id: "14",
     title: "Aerial photography of cars on parking lot",
+    tag: "city",
+    url: "https://img.freepik.com/free-photo/asphalt-road-modern-city_1127-3062.jpg?size=626&ext=jpg&ga=GA1.2.537013422.1695292574&semt=sph",
+  },
+  {
+    id: "19",
+    title: "Aerial photography of cars on parking lot",
+    tag: "people",
+    url: "https://img.freepik.com/free-photo/black-girls-city_1157-14448.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
+  },
+  {
+    id: "20",
+    title: "cars on parking lot",
     tag: "cars",
-    url: "https://images.unsplash.com/photo-1543465077-db45d34b88a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGNhcnN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60",
+    url: "https://img.freepik.com/free-photo/view-car-running-high-speed_23-2150635413.jpg?size=626&ext=jpg&ga=GA1.1.537013422.1695292574&semt=sph",
   },
 ];
