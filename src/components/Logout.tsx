@@ -12,7 +12,7 @@ const LogoutButton = () => {
         logout({
           logoutParams: {
             returnTo: `
-          ${window.location.origin}/image-galery`,
+          ${window.location.origin}/image-gallery`,
           },
         })
       }
