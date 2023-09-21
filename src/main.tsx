@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         domain="dev-yoaz0vnd4h8pc4e7.us.auth0.com"
         clientId="Q7ZCuzsYuooUGWM2LZQgjl5Ysa0LFeif"
         authorizationParams={{
-          redirect_uri: window.location.origin,
+          redirect_uri: "https://superfly101.github.io/image-gallery",
         }}
       >
         <ChakraProvider>
